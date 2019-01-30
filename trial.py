@@ -16,8 +16,12 @@ def detect_outlier(data_1):
             outliers.append(y)
     return outliers
 
+# READ CSV (Pandas)
 happy = pd.read_csv("_data/2017.csv")
-print happy 
+print happy
 
-outlier_datapoints = detect_outlier(happy)
-print(outlier_datapoints)
+# CHANGE TO NUMPY ARRAY
+happy_np = happy.as_matrix()
+
+# outlier_datapoints = detect_outlier(happy)
+# print(outlier_datapoints)
