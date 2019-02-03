@@ -49,7 +49,7 @@ def valuation_formula(x):
 #
 parser = argparse.ArgumentParser()
 parser.add_argument("--data", dest = "datafile", default='D:/STUDIA/ed/NASZ/data2017converted.csv', help="Path to .csv file to use")
-args = parser.parse_args()aul
+args = parser.parse_args()
 
 # 'D:/STUDIA/ed/NASZ/data2017converted.csv'
 # '../_data/data2017converted.csv'
