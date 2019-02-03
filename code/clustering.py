@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt      # For Graphics
 import seaborn as sns
 from sklearn import cluster, mixture # For clustering 
 from sklearn.preprocessing import StandardScaler
+import argparse 
+from dateutil.parser import parse
 
  #.) K Means Clustering - K means clustering works by selecting centroids randomly and number of centroids are inputs to clustering algorithm.Once random centroids are selected then distance from each centroid for each observations are calculated and each observation data is allocated to a centroid to which distance of observation is minimum
 
@@ -45,8 +47,24 @@ def plot_cluster(labels,centers,df_wh):
     plt.show()
 
 	#axarr.plot(x,y)
-	
-df_wh = pd.read_csv('D:/STUDIA/ed/NASZ/data2017.csv')
+
+
+#
+#  Agument parser section
+#
+parser = argparse.ArgumentParser()
+parser.add_argument("--data", dest = "datafile", default='D:/STUDIA/ed/NASZ/data2017converted.csv', help="Path to .csv file to use")
+parser.add_argument("--path", dest = "source_path", default='.', help="Path to .csv file to save data.")
+args = parser.parse_args()
+
+# 'D:/STUDIA/ed/NASZ/data2017converted.csv'
+# '../_data/data2017converted.csv'
+#
+#  Logger section
+#
+datafile = args.datafile
+df_wh = pd.read_csv(datafile)
+
 df_copy=df_wh
 #df_wh=pd.DataFrame(data=df_wh)
 df_wh.head()
@@ -62,6 +80,8 @@ df_copy['clusters'] = labels
 df_copy=pd.DataFrame(data=df_copy)
 df_copy.head()
 
-df_copy.to_csv('data2017clusters.csv')
+name = 'data2017clusters.csv'
+path_df_copy = source_path + name
+df_copy.to_csv(path_df_copy)
 
 #plt.show()

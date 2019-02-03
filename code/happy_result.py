@@ -4,9 +4,25 @@ import numpy as np
 import matplotlib.pyplot as plt
 from plotly import graph_objs as go, offline as offline
 #from plotly import graphs_obj as go , offline as offline
+import argparse 
+from dateutil.parser import parse
 
 #---------------------import data---------------------------------------
-df = pd.read_csv('D:/STUDIA/ed/NASZ/data2017.csv')
+
+#
+#  Agument parser section
+#
+parser = argparse.ArgumentParser()
+parser.add_argument("--data", dest = "datafile",  default='D:/STUDIA/ed/NASZ/data2017converted.csv', help="Path to .csv file to use")
+args = parser.parse_args()
+
+# 'D:/STUDIA/ed/NASZ/data2017converted.csv'
+# '../_data/data2017converted.csv'
+#
+#  Logger section
+#
+datafile = args.datafile
+df = pd.read_csv(datafile)
 
 print('We have',len(df['Country'].unique()),'countries. Thus, we decided to look at the trend by major regions')
 print(df.columns)

@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import pycountry
+import argparse 
+from dateutil.parser import parse
 
 def valuation_formula(x):
 	print(x)
@@ -42,7 +44,20 @@ def valuation_formula(x):
 		return (pycountry.countries.get(name=x).alpha_3)
 	#Bolivia
 
-df = pd.read_csv('D:/STUDIA/ed/NASZ/data2017.csv')
+#
+#  Agument parser section
+#
+parser = argparse.ArgumentParser()
+parser.add_argument("--data", dest = "datafile", default='D:/STUDIA/ed/NASZ/data2017converted.csv', help="Path to .csv file to use")
+args = parser.parse_args()aul
+
+# 'D:/STUDIA/ed/NASZ/data2017converted.csv'
+# '../_data/data2017converted.csv'
+#
+#  Logger section
+#
+datafile = args.datafile
+df = pd.read_csv(datafile)
 
 
 df=pd.DataFrame(data=df)

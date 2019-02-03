@@ -4,7 +4,25 @@ import pandas as pd
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 init_notebook_mode(connected=True)
 
-df = pd.read_csv('D:/STUDIA/ed/NASZ/data2017converted.csv')
+import argparse 
+from dateutil.parser import parse
+
+#
+#  Agument parser section
+#
+parser = argparse.ArgumentParser()
+parser.add_argument("--data", dest = "datafile",  default='D:/STUDIA/ed/NASZ/data2017converted.csv', help="Path to .csv file to use")
+args = parser.parse_args()
+
+# Paths
+# 'D:/STUDIA/ed/NASZ/data2017converted.csv'
+# '~/Documents/SEM2/ED/data_mining_hapiness/_data/data2017converted.csv'
+
+#
+#  Logger section
+#
+datafile = args.datafile
+df = pd.read_csv(datafile)
 
 data = [ dict(
         type = 'choropleth',
