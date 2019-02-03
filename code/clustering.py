@@ -53,8 +53,8 @@ def plot_cluster(labels,centers,df_wh):
 #  Agument parser section
 #
 parser = argparse.ArgumentParser()
-parser.add_argument("--data", dest = "datafile", default='D:/STUDIA/ed/NASZ/data2017converted.csv', help="Path to .csv file to use")
-parser.add_argument("--path", dest = "source_path", default='.', help="Path to .csv file to save data.")
+parser.add_argument("--data", dest = "datafile", default='D:/STUDIA/ed/NASZ/data2017.csv', help="Path to .csv file to use")
+parser.add_argument("--path", dest = "source_path", default='./', help="Path to .csv file to save data.")
 args = parser.parse_args()
 
 # 'D:/STUDIA/ed/NASZ/data2017converted.csv'
@@ -62,6 +62,7 @@ args = parser.parse_args()
 #
 #  Logger section
 #
+source_path = args.source_path
 datafile = args.datafile
 df_wh = pd.read_csv(datafile)
 
@@ -81,7 +82,7 @@ df_copy=pd.DataFrame(data=df_copy)
 df_copy.head()
 
 name = 'data2017clusters.csv'
-path_df_copy = source_path + name
-df_copy.to_csv(path_df_copy)
+path_df_clusters = source_path + name
+df_copy.to_csv(path_df_clusters)
 
 #plt.show()

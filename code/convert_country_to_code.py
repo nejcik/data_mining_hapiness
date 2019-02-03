@@ -48,17 +48,22 @@ def valuation_formula(x):
 #  Agument parser section
 #
 parser = argparse.ArgumentParser()
-parser.add_argument("--data", dest = "datafile", default='D:/STUDIA/ed/NASZ/data2017converted.csv', help="Path to .csv file to use")
+parser.add_argument("--data", dest = "datafile", default='D:/STUDIA/ed/NASZ/data2017.csv', help="Path to .csv file to use")
+parser.add_argument("--path", dest = "source_path", default='./', help="Path to .csv file to save data.")
 args = parser.parse_args()
 
-# 'D:/STUDIA/ed/NASZ/data2017converted.csv'
-# '../_data/data2017converted.csv'
+# 'D:/STUDIA/ed/NASZ/_data/2017.csv'
+# '../_data/2017.csv'
 #
 #  Logger section
 #
 datafile = args.datafile
+source_path = args.source_path
 df = pd.read_csv(datafile)
 
+print(list(pycountry.countries))
+print("********************")
+print(df['Country'])
 
 df=pd.DataFrame(data=df)
 df['country_code'] = df.apply(lambda row: valuation_formula(row['Country']), axis=1)
@@ -68,4 +73,6 @@ df.head()
 #print(df)
 
 #df=pd.DataFrame(data=df)
-df.to_csv('data2017converted.csv')
+name = 'data2017converted.csv'
+path_to_converted = source_path + name
+df.to_csv(path_to_converted)
