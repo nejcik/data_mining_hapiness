@@ -13,7 +13,7 @@ from dateutil.parser import parse
 #  Agument parser section
 #
 parser = argparse.ArgumentParser()
-parser.add_argument("--data", dest = "datafile",  default='D:/STUDIA/ed/NASZ/data2017.csv', help="Path to .csv file to use")
+parser.add_argument("--data", dest = "datafile",  default='D:/STUDIA/ed/NASZ/data2018.csv', help="Path to .csv file to use")
 args = parser.parse_args()
 
 # 'D:/STUDIA/ed/NASZ/_data/2017.csv'
@@ -27,13 +27,14 @@ df = pd.read_csv(datafile)
 print('We have',len(df['Country'].unique()),'countries. Thus, we decided to look at the trend by major regions')
 print(df.columns)
 
-df_region=df.groupby(['Region'])['Happiness.Rank', 'Happiness.Score', 'Economy..GDP.per.Capita.'].mean().sort_values(by="Happiness.Score", ascending=False)
+df_region=df.groupby(['Region'])['Happiness.Rank', 'Happiness.Score', 'Economy..GDP.per.Capita.', 'Family', 'Health..Life.Expectancy.','Freedom','Generosity','Trust..Government.Corruption.'].mean().sort_values(by="Happiness.Score", ascending=False)
 
 #-----------save data grouped by region to csv file----------------------
 df_region_df=pd.DataFrame(data=df_region)
 df_region_df.to_csv('region_vs_hapiness.csv')
 
-print(df_region_df)
+with pd.option_context('display.max_rows', -1, 'display.max_columns', 7):
+    print(df_region_df)
 
 #------------------draw table--------------------------------------------
 fig, ax = plt.subplots()

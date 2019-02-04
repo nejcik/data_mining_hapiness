@@ -11,7 +11,7 @@ from dateutil.parser import parse
 #  Agument parser section
 #
 parser = argparse.ArgumentParser()
-parser.add_argument("--data", dest = "datafile",  default='D:/STUDIA/ed/NASZ/data2017converted.csv', help="Path to .csv file to use")
+parser.add_argument("--data", dest = "datafile",  default='D:/STUDIA/ed/NASZ/data2018converted.csv', help="Path to .csv file to use")
 args = parser.parse_args()
 
 # Paths

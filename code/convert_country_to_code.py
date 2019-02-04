@@ -48,7 +48,7 @@ def valuation_formula(x):
 #  Agument parser section
 #
 parser = argparse.ArgumentParser()
-parser.add_argument("--data", dest = "datafile", default='D:/STUDIA/ed/NASZ/data2017.csv', help="Path to .csv file to use")
+parser.add_argument("--data", dest = "datafile", default='D:/STUDIA/ed/NASZ/data2018.csv', help="Path to .csv file to use")
 parser.add_argument("--path", dest = "source_path", default='./', help="Path to .csv file to save data.")
 args = parser.parse_args()
 
@@ -73,6 +73,6 @@ df.head()
 #print(df)
 
 #df=pd.DataFrame(data=df)
-name = 'data2017converted.csv'
+name = 'data2018converted.csv'
 path_to_converted = source_path + name
 df.to_csv(path_to_converted)
